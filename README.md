@@ -11,7 +11,7 @@ Command line testing tool for Factual API
     
 ### Running
     
-factual-api-tester can be called directly from the shell, so adding it to your PATH will allow it to be called form anywhere.
+factual-api-tester can be called directly from the shell, so adding it to your PATH will allow it to be called from anywhere.
 
     ./factual-api-tester
 
