@@ -22,6 +22,18 @@ factual-api-tester can be called directly from the shell, so adding it to your P
 
     ./factual-api-tester
 
+Interface:
+
+    TARGET: api.v3.factual.com
+
+    Available queries:
+    0) /t/places?filters={"country":"US"}
+    1) /t/places?geo={"$within":{"$rect":[[34.06110,-118.42283],[34.05771,-118.41399]]}}
+    2) /t/places-v3/resolve?values={"name":"McDonalds","address":"10451 Santa Monica Blvd","region":"CA","postcode":"90025"}
+    3) /t/places-v3/submit?user="TestUser"&values={"name":"NotARealPlace","latitude":"90","longitude":"0"}
+
+    query:
+
 Help can be found by:
 
     ./factual-api-tester --help
