@@ -11,8 +11,8 @@ Command line testing tool for Factual API
     
 The tool looks for a yaml config file to provide the API oauth key and secret under ~/.factual/factual-auth.yaml:
 
-    key: 6Mueo89QbEGNBH4wbdz7sX9i03mFLQJvAG7HMU5x (not a real key)
-    secret: TgGoy6HcJLJpGKfmsncyljATtZR2nqGNvRNSpDCx (not a real secret)
+    key: 6Mueo89QbxGNBH4wbdz7sX9i03mxLQJvAG7HMU5x (not a real key)
+    secret: TgGoy6HcJLJpxKfmsncyljATtZRxnqGNvRNSpDCx (not a real secret)
     
 To get a key and secret please visit https://www.factual.com/partners/register
     
