@@ -38,4 +38,9 @@ Help can be found by:
 
     ./factual-api-tester --help
 
-Additional queries can be added by appending them to factual-api-tester/queries.txt.
+Additional queries can be added by appending them to factual-api-tester/queries.txt:
+
+    { "action":"get", "path":"/t/places?filters={\"country\":\"US\"}" }
+    { "action":"get", "path":"/t/places?geo={\"$within\":{\"$rect\":[[34.06110,-118.42283],[34.05771,-118.41399]]}}" }
+    { "action":"get", "path":"/t/places-v3/resolve?values={\"name\":\"McDonalds\",\"address\":\"10451 Santa Monica Blvd\",\"region\":\"CA\",\"postcode\":\"90025\"}"}
+    { "action":"post", "path":"/t/places-v3/submit?user=\"TestUser\"&values={\"name\":\"NotARealPlace\",\"latitude\":\"90\",\"longitude\":\"0\"}" }
