@@ -9,6 +9,13 @@ Command line testing tool for Factual API
     cd factual-api-tester
     npm install
     
+The tool looks for a yaml config file to provide the API oauth key and secret under ~/.factual/factual-auth.yaml:
+
+    key: 6Mueo89QbEGNBH4wbdz7sX9i03mFLQJvAG7HMU5x (not a real key)
+    secret: TgGoy6HcJLJpGKfmsncyljATtZR2nqGNvRNSpDCx (not a real secret)
+    
+To get a key and secret please visit https://www.factual.com/partners/register
+    
 ### Running
 
 factual-api-tester can be called directly from the shell, so adding it to your PATH will allow it to be called from anywhere.
