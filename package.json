@@ -1,7 +1,6 @@
 {
     "name": "factual-api-tester"
   , "version": "0.0.2"
-  , "private": true
   , "dependencies": {
       "factual-api": "1.0.x"
     , "commander": "1.1.x"
