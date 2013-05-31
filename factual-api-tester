@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 var fs = require('fs');
+var path = require('path');
 var carrier = require('carrier');
 var program = require('commander');
 var Factual = require('factual-api');
@@ -10,7 +11,7 @@ var nock = require('nock');
 nock.recorder.rec();
 
 var queries = [];
-var queryStream = carrier.carry(fs.createReadStream('./queries.txt'));
+var queryStream = carrier.carry(fs.createReadStream(path.resolve(__dirname, 'queries.txt')));
 queryStream.on('line', function (line) {
   var parsedLine = JSON.parse(line);
   if ((parsedLine.action === 'get' || parsedLine.action === 'post') && parsedLine.path !== undefined) {
