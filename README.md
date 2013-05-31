@@ -32,7 +32,7 @@ Interface:
     2) /t/places-v3/resolve?values={"name":"McDonalds","address":"10451 Santa Monica Blvd","region":"CA","postcode":"90025"}
     3) /t/places-v3/submit?user="TestUser"&values={"name":"NotARealPlace","latitude":"90","longitude":"0"}
 
-    query:
+    query: <type a query # here>
 
 Help can be found by:
 
