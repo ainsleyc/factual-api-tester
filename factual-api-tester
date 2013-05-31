@@ -1,0 +1,85 @@
+#!/usr/bin/env node
+
+var fs = require('fs');
+var carrier = require('carrier');
+var program = require('commander');
+var Factual = require('factual-api');
+require('js-yaml');
+
+var nock = require('nock');
+nock.recorder.rec();
+
+var queries = [];
+var queryStream = carrier.carry(fs.createReadStream('./queries.txt'));
+queryStream.on('line', function (line) {
+  var parsedLine = JSON.parse(line);
+  if ((parsedLine.action === 'get' || parsedLine.action === 'post') && parsedLine.path !== undefined) {
+    queries.push(parsedLine);
+  }
+});
+queryStream.on('end', function () {
+  printOptions();
+  startQuery();
+});
+
+program
+  .version('0.0.1')
+  .option('-h, --host   <host>', 'set Factual api host. Defaults to api.v3.factual.com')
+  .option('-k, --key    <key>', 'set Factual api key. May also be set in ~/.factual/factual-auth.yaml')
+  .option('-s, --secret <secret>', 'set Factual api secret. May also be set in ~/.factual/factual-auth.yaml')
+  .parse(process.argv);
+
+var KEY;
+var SECRET;
+if (program.key && program.key) {
+  KEY = program.key;
+  SECRET = program.secret;
+} else {
+  var authConfig = require(process.env['HOME'] + '/.factual/factual-auth.yaml');
+  if (authConfig) { 
+    KEY = authConfig.key;
+    SECRET = authConfig.secret;
+  }
+}
+if (!KEY || !SECRET) {
+  console.log("");
+  console.log("WARNING: a key and secret were not found in ~/.factual/factual-auth.yaml, your requests may not work");
+}
+var factual = new Factual(KEY, SECRET);
+
+if (program.host) {
+  factual.setBaseURI("http://" + program.host);
+}
+console.log("");
+console.log("TARGET: " + (program.host ? program.host : 'api.v3.factual.com'));
+
+function printOptions() {
+  console.log("");
+  console.log("Available queries:");
+  var index;
+  for(index = 0; index < queries.length; index++) {
+    console.log(index + ") " + queries[index].path);
+  }
+}
+
+function startQuery() {
+  console.log("");
+  program.prompt('query: ', makeRequest);    
+}
+
+function makeRequest(index) {
+  if (!queries[index]) {
+    console.log("index " + index + " does not exist, please try again");
+    startQuery();
+  } else {
+    factual[queries[index].action](queries[index].path, function (error, res) {
+      if (error) {
+        console.log(error);
+      }
+      printOptions();
+      startQuery();
+    });
+  }
+}
+
+setTimeout(function () {}, 24*60*60*1000);

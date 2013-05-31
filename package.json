@@ -1,0 +1,12 @@
+{
+    "name": "factual-api-tester"
+  , "version": "0.0.1"
+  , "private": true
+  , "dependencies": {
+      "factual-api": "1.0.x"
+    , "commander": "1.1.x"
+    , "carrier": "0.1.x"
+    , "nock": "0.18.x"
+    , "js-yaml": "2.0.x"
+  }
+}
