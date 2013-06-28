@@ -59,7 +59,7 @@ function printOptions() {
   console.log("Available queries:");
   var index;
   for(index = 0; index < queries.length; index++) {
-    console.log(index + ") " + queries[index].path);
+    console.log(index + ") " + queries[index].path + (queries[index].body ? " " + queries[index].body : ""));
   }
 }
 
@@ -68,18 +68,24 @@ function startQuery() {
   program.prompt('query: ', makeRequest);    
 }
 
+function queryHandler(error, res) {
+  if (error) {
+    console.log(error);
+  }
+  printOptions();
+  startQuery();
+};
+
 function makeRequest(index) {
   if (!queries[index]) {
     console.log("index " + index + " does not exist, please try again");
     startQuery();
   } else {
-    factual[queries[index].action](queries[index].path, function (error, res) {
-      if (error) {
-        console.log(error);
-      }
-      printOptions();
-      startQuery();
-    });
+    if (queries[index].body) {
+      factual[queries[index].action](queries[index].path, queries[index].body, queryHandler);
+    } else {
+      factual[queries[index].action](queries[index].path, queryHandler);
+    }
   }
 }
 

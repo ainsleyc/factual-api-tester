@@ -1,4 +1,17 @@
 { "action":"get", "path":"/t/places?filters={\"country\":\"US\"}" }
 { "action":"get", "path":"/t/places?geo={\"$within\":{\"$rect\":[[34.06110,-118.42283],[34.05771,-118.41399]]}}" }
 { "action":"get", "path":"/t/places-v3/resolve?values={\"name\":\"McDonalds\",\"address\":\"10451 Santa Monica Blvd\",\"region\":\"CA\",\"postcode\":\"90025\"}"}
-{ "action":"post", "path":"/t/places-v3/submit?user=\"TestUser\"&values={\"name\":\"NotARealPlace\",\"latitude\":\"90\",\"longitude\":\"0\"}" }
+{ "action":"get", "path":"/t/places-us?filters={\"country\":\"US\"}" }
+{ "action":"get", "path":"/t/places-us/resolve?values={\"name\":\"McDonalds\",\"address\":\"10451 Santa Monica Blvd\",\"region\":\"CA\",\"postcode\":\"90025\"}"}
+{ "action":"get", "path":"/t/places-us/facets?limit=50&offset=0&q=The+Joule,+a+Luxury+Collection+Hotel+Dallas,+TX,+United+States&select=locality,region,country,category,category_ids,chain_name,category_labels"}
+{ "action":"get", "path":"/t/places?filters={\"factual_id\":\"9af7e1fa-73a7-4aa0-8d2f-de22f708697f\"}"}
+{ "action":"get", "path":"/t/places-se?filters={\"factual_id\":\"9af7e1fa-73a7-4aa0-8d2f-de22f708697f\"}"}
+{ "action":"get", "path":"/t/crosswalk?filters={\"namespace\":\"foursquare\",\"namespace_id\":\"4bb40904737d76b0c9133b7c\"}"}
+{ "action":"get", "path":"/t/places/facets?select=category&geo={\"$circle\":{\"$center\":[34.06018, -118.41835],\"$meters\": 5000}}"}
+{ "action":"get", "path":"/t/places-v3/match?values={\"name\":\"McDonalds\",\"address\":\"10451 Santa Monica Blvd\",\"region\":\"CA\",\"postcode\":\"90025\"}"}
+{ "action":"get", "path":"/t/restaurants?q=Coffee Santa Monica" }
+{ "action":"get", "path":"/t/restaurants?xq={\"q\":\"Coffee\",\"mm\":\"2\",\"pf\":\"test\"}"}
+{ "action":"get", "path":"/places/resolve?values={\"name\":\"starbucks\",\"address\":\"1014 Wilsire Blvd\"}"}
+{ "action":"get", "path":"/t/places?xq={\"q\":\"Coffie is nice in the morning\"}"}
+{ "action":"get", "path":"/t/places-us?xq={\"defType\":\"dismax\",\"q\":\"factual los angeles 90068\",\"mm\":\"75%\"}"}
+{ "action":"get", "path":"/t/places-edge/resolve?values={\"name\":\"Arbutus\"}"}
